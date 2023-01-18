@@ -14,12 +14,11 @@ router.get('/details', authMiddleware, appDetailsController.allApps)
 
 router.post("/kyc",
     [
-        check("ssn")
-            .isNumeric()
-            .isLength({
-                min: 4,
-            })
-            .withMessage("length is 4"),
+        check("address")
+        .exists()
+        .withMessage("address is Requiered")
+        .isString()
+        .withMessage("address is string"),
         check("fullname")
             .exists()
             .withMessage("fullname is Requiered")
@@ -47,6 +46,8 @@ router.post("/kyc",
             .withMessage("public_id is string"),
     ],
     authMiddleware, appDetailsController.kyc);
+
+ router.get('/getKycId/:_id',  appDetailsController.getKyc)
 
 // router.get('/admin', authMiddleware,  appDetailsController.getdetails)
 

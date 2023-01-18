@@ -15,6 +15,8 @@ router.get('/getUsersById/:_id',  a.getUsersById)
 
 router.get('/getTransById/:_id',  a.getTransById)
 
+
+
 router.post('/addProductImage',  upload.single('productImage'), a.addProductImage)
 
 router.get('/getTransByStatus/:status',  a.getTransByStatus)

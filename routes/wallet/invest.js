@@ -41,7 +41,7 @@ router.post(
     a.allApps
 );
 
-router.get("/getDeposit/:history", authMiddleware, a.gethistory);
+router.get("/getDeposit", authMiddleware, a.gethistory);
 
 router.get("/getTrans", a.getTrans);
 

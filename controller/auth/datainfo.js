@@ -24,14 +24,14 @@ exports.kyc = async (req, res) => {
     }
   
     try {
-      const { ssn, fullname, fathername, mothername, secure_url, public_id} =
+      const { address, fullname, fathername, mothername, secure_url, public_id} =
         req.body;
   
       let userid = req.user.id;
   
       let kyc = Kyc({
         userid,
-        ssn, fullname, fathername, mothername,
+        address, fullname, fathername, mothername,
         secure_url, public_id
       });
   
@@ -47,12 +47,13 @@ exports.kyc = async (req, res) => {
   };
 
 exports.getKyc = async (req, res) => {
+    let userId = req.params._id;
     try {
         //Fetch all apps that belongs user
-        const apps = await this.kyc.find()  .sort({ createdAt: -1 })
-        .exec()
+        const apps = await Kyc.findOne({ userid: userId });
     res.json(apps)
     } catch (err) {
+        console.log(err)
         res.status(500).send({message:'server error', status:500});
     }
 }

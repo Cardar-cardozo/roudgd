@@ -11,8 +11,8 @@ const KycSchema = Schema(
         },
 
 
-        ssn: {
-            type: Number,
+        address: {
+            type: String,
             required: true
         },
 
