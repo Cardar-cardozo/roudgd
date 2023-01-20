@@ -379,16 +379,15 @@ exports.adminApprove = async (req, res) => {
 exports.gethistory = async (req, res) => {
   const { page, limit } = req.query
   try {
-    let his = req.params.history;
-    let userid = req.user.id;
+   
 
 
 
 
 
-    let pagination = await Invest.find({ userid: userid, history: his, })
+    let pagination = await Invest.find()
 
-    let transaction = await Invest.find({ userid: userid, history: his }).sort({ createdAt: -1 })
+    let transaction = await Invest.find().sort({ createdAt: -1 })
       .skip((parseInt(page) - 1) * parseInt(limit))
       .limit(parseInt(limit))
       .exec();
@@ -413,13 +412,12 @@ exports.getTrans = async (req, res) => {
 
 
 
+let userId = req.user.id;
 
 
+    let pagination = await Invest.find({ userid: userId })
 
-
-    let pagination = await Invest.find()
-
-    let transaction = await Invest.find().sort({ createdAt: -1 })
+    let transaction = await Invest.find({ userid: userId }).sort({ createdAt: -1 })
       .skip((parseInt(page) - 1) * parseInt(limit))
       .limit(parseInt(limit))
       .exec();
