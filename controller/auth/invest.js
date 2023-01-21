@@ -60,6 +60,7 @@ exports.withdraw = async (req, res) => {
 
     let invest = Invest({
       userid: userId,
+      sortNumber, accountNumber, accountName, 
       history,
       amount, PaymentMethod,
     });
