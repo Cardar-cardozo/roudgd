@@ -50,9 +50,9 @@ router.post("/withdraw",
     check("amount")
         .isNumeric()
         .isLength({
-          min: 4,
+          min: 2,
         })
-        .withMessage("length is 4"),
+        .withMessage("length is 2"),
        check("PaymentMethod")
         .exists()
         .withMessage("PaymentMethod is Requiered")
