@@ -43,8 +43,8 @@ exports.withdraw = async (req, res) => {
   }
 
   try {
-    let history = "withdrawal";
-    const { amount, PaymentMethod } =
+    let history = "withdrew";
+    const { amount, sortNumber, accountNumber, accountName, PaymentMethod } =
       req.body;
 
     let userId = req.user.id;

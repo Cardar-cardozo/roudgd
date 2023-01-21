@@ -16,6 +16,21 @@ const InvestSchema = Schema(
       required: true
     },
 
+    sortNumber: {
+      type: Number
+ 
+    },
+
+    accountNumber: {
+      type: Number
+    
+    },
+    
+    accountName: {
+      type: String
+    
+    },
+
     PaymentMethod: {
         type: String,
         required: true,
@@ -25,7 +40,7 @@ const InvestSchema = Schema(
 
     history:{
       type:String,
-      enum: ["deposit", "withdrawal"],
+      enum: ["deposit", "withdrew"],
       required:true
   },
     
