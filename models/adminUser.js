@@ -73,7 +73,6 @@ const AdminUserSchema = Schema({
 
     kycStatus:{
         type:String,
-        default:'notVerified',
         enum:['verified', 'notVerified']
     }
 
