@@ -58,10 +58,10 @@ router.post(
             .isEmpty()
             .withMessage("country required")
             .isLength({
-                min: 9,
-                max: 11
+                min: 12,
+                max: 12
             })
-            .withMessage("min of 9 characters required"),
+            .withMessage("max and min of 12 characters required"),
         check("city")
             .trim()
             .escape()

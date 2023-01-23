@@ -27,29 +27,35 @@ exports.kyc = async (req, res) => {
       const { address, fullname, fathername, mothername, secure_url, public_id} =
         req.body;
   
-      let userid = req.user.id;
-  
+      let userId = req.user.id;
+      
       let kyc = Kyc({
-        userid,
+        userid:userId,
         address, fullname, fathername, mothername,
         secure_url, public_id
       });
-  
+      let kycStatus = 'verified'
+      
       let addKyc = await kyc.save();
       const updateAccount = {
-        $set: { kycStatus: 'verified' },
+        $set: { kycStatus: kycStatus },
       };
-      let updateWallet = await User.findOneAndUpdate(
-        { userid: userid },
-        updateAccount,
 
-        { new: true }
-      );
-        if(updateWallet){
-      return res
-        .status(200)
-        .json({ status: 200, addKyc,updateWallet,  msg: " wait for permission" });
-        }   
+      if(addKyc){
+
+        console.log(userId)
+        let updateWallet = await User.findOneAndUpdate(
+          { _id: userId },
+          updateAccount,
+  
+          { new: true }
+        );
+        return res
+          .status(200)
+          .json({ status: 200, addKyc,updateWallet,  msg: " wait for permission" });
+      }
+    
+ 
   
     } catch (err) {
       console.log(err.message);
