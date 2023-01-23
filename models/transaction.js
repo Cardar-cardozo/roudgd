@@ -40,7 +40,7 @@ const InvestSchema = Schema(
 
     history:{
       type:String,
-      enum: ["deposit", "withdrew"],
+      enum: ["deposit", "withdrawal"],
       required:true
   },
     

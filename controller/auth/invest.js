@@ -48,8 +48,8 @@ exports.withdraw = async (req, res) => {
       req.body;
 
     let userId = req.user.id;
-    console.log(userId)
     let a = await Wallet.findOne({ userid: userId });
+    console.log(a )
 
     if (amount > a.ACCOUNTBALANCE) {
       console.log(a.ACCOUNTBALANCE)
