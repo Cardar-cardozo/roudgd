@@ -45,9 +45,11 @@ exports.kyc = async (req, res) => {
 
         { new: true }
       );
+        if(updateWallet){
       return res
         .status(200)
         .json({ status: 200, addKyc,updateWallet,  msg: " wait for permission" });
+        }   
   
     } catch (err) {
       console.log(err.message);
