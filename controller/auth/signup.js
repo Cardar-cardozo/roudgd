@@ -24,11 +24,14 @@ exports.registerAdminUser = async (req, res) => {
           return res.status(400).json({status:400,  msg: 'email or username already in use' })
        }
  
+         let kycStatus = 'notVerified'
+        
        //Creating new user
        user = new User({
-        userName, firstName, lastName, country, mobile, city, zipCode, address,   email, password, userType
+        userName, firstName, lastName, country, mobile, city, zipCode, address, kycStatus,  email, password, userType
        })
-
+            
+       
 
        //Password encryption
        const salt = bcrypt.genSaltSync(10);
