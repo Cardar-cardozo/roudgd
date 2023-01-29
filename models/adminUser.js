@@ -36,7 +36,7 @@ const AdminUserSchema = Schema({
     },
 
     zipCode: {
-        type: Number,
+        type: String,
         required: true,
     },
 
