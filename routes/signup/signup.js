@@ -20,7 +20,7 @@ router.post(
             .isLength({
                 min: 3,
             })
-            .withMessage("min of 6 characters required"),
+            .withMessage("username is min of 3 characters required"),
         check("firstName")
             .trim()
             .escape()
@@ -30,7 +30,7 @@ router.post(
             .isLength({
                 min: 3,
             })
-            .withMessage("min of 6 characters required"),
+            .withMessage("First Name is min of 3 characters required"),
         check("lastName")
             .trim()
             .escape()
@@ -40,7 +40,7 @@ router.post(
             .isLength({
                 min: 3,
             })
-            .withMessage("min of 6 characters required"),
+            .withMessage("last Name is min of 6 characters required"),
         check("country")
             .trim()
             .escape()
@@ -50,18 +50,17 @@ router.post(
             .isLength({
                 min: 3,
             })
-            .withMessage("min of 9 characters required"),
+            .withMessage("country is min of 3 characters required"),
         check("mobile")
             .trim()
             .escape()
             .not()
             .isEmpty()
-            .withMessage("country required")
+            .withMessage("mobile required")
             .isLength({
-                min: 13,
                 max: 13
             })
-            .withMessage("max and min of 13 characters required"),
+            .withMessage("mobile is max of 13 characters required"),
         check("city")
             .trim()
             .escape()
@@ -71,17 +70,17 @@ router.post(
             .isLength({
                 min: 3,
             })
-            .withMessage("min of 9 characters required"),
+            .withMessage("city is min of 3 characters required"),
         check("zipCode")
             .trim()
             .escape()
             .not()
             .isEmpty()
-            .withMessage("zipCode required")
+            .withMessage("postal required")
             .isLength({
                 min: 3,
             })
-            .withMessage("min of 9 characters required"),
+            .withMessage("postal is min of 3 characters required"),
         check("address")
             .trim()
             .escape()
@@ -89,9 +88,9 @@ router.post(
             .isEmpty()
             .withMessage("address required")
             .isLength({
-                min: 7,
+                min: 3,
             })
-            .withMessage("min of 9 characters required"),
+            .withMessage("address is min of 3 characters required"),
         check("email")
             .trim()
             .not()
@@ -107,16 +106,16 @@ router.post(
             .isLength({ min: 5 })
             .withMessage("password must be minimum 5 length")
             .matches(/(?=.*?[A-Z])/)
-            .withMessage("At least one Uppercase")
+            .withMessage("password must have at least one Uppercase")
             .matches(/(?=.*?[a-z])/)
-            .withMessage("At least one Lowercase")
+            .withMessage("password must have at least one Lowercase")
             .matches(/(?=.*?[0-9])/)
-            .withMessage("At least one Number")
+            .withMessage("password must have at least one Number")
             .matches(/(?=.*?[#?!@$%^&*-])/)
-            .withMessage("At least one special character")
+            .withMessage("password must have at least one special character")
             .not()
             .matches(/^$|\s+/)
-            .withMessage("White space not allowed"),
+            .withMessage("password must not have White space not allowed"),
         check("userType")
             .exists()
             .withMessage("userType is Requiered")
